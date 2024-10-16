@@ -51,9 +51,17 @@ app.post('/api/contact', (req, res) => {
 });
 
 // GET route for testing
+//app.get('/api/contact', (req, res) => {
+//  res.send('Contact API is running');
+//});
+
+// GET route to retrieve all contact submissions
 app.get('/api/contact', (req, res) => {
-  res.send('Contact API is running');
-});
+    Contact.find()
+      .then((contacts) => res.status(200).json(contacts))
+      .catch((err) => res.status(500).json({ error: 'Failed to fetch contacts', err }));
+  });
+  
 
 // Start the server
 const PORT = process.env.PORT || 3000;
