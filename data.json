@@ -1,0 +1,7 @@
+{
+    "fullName": "Test User",
+    "emailAddress": "test@example.com",
+    "mobileNumber": "1234567890",
+    "emailSubject": "Test Subject",
+    "message": "Test message"
+  }
