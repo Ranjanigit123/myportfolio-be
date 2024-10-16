@@ -12,14 +12,14 @@ app.use(cors());
 const MONGO_URL = "mongodb+srv://ranjanirithu206:KS0pwc1jwcIxmZu0@cluster0.8mgcr.mongodb.net/MEAN?retryWrites=true&w=majority";
 
 // Connect to MongoDB (ensure your MongoDB URI is correct)
-mongoose.connect(MONGO_URL)
-  //useNewUrlParser: true,
-  //useUnifiedTopology: true,
-//})
+mongoose.connect(MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-// Create a simple Contact schema (this can be in another file for a larger project)
+// Create a simple Contact schema
 const ContactSchema = new mongoose.Schema({
   fullName: String,
   emailAddress: String,
@@ -48,6 +48,11 @@ app.post('/api/contact', (req, res) => {
   newContact.save()
     .then(() => res.status(200).json({ msg: 'Contact form submitted successfully' }))
     .catch(err => res.status(500).json({ error: 'Failed to submit the form', err }));
+});
+
+// GET route for testing
+app.get('/api/contact', (req, res) => {
+  res.send('Contact API is running');
 });
 
 // Start the server
