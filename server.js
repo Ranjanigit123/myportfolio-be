@@ -7,7 +7,11 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: ['https://myportfolio-be-nptr.onrender.com/api/contact', 'https://ranjaniportfolio.netlify.app/']
+}
+
+));
 
 const MONGO_URL = "mongodb+srv://ranjanirithu206:KS0pwc1jwcIxmZu0@cluster0.8mgcr.mongodb.net/MEAN?retryWrites=true&w=majority";
 
